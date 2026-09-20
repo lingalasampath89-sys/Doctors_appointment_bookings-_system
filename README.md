@@ -138,4 +138,4 @@ This project is open source and available for personal and educational use.
 ---
 
 <p align="center">Built with ❤️ to make finding and booking care simple.</p>
-![AppointmentApp Banner](https://raw.githubusercontent.com/lingalasampath89-sys/Doctors_appointment_bookings-_system/main/ccimage.png)
+![AppointmentApp Banner](ccimage.png)
