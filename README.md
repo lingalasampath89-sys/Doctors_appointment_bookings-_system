@@ -1,5 +1,5 @@
 # 🩺 AppointmentApp
-
+![image alt](https://github.com/lingalasampath89-sys/Doctors_appointment_bookings-_system/blob/10e34e7a210bb2f9bb15aaa8189bb236cd539f67/ccimage.png)
 <p align="center">
   <img src="assets/ccimage.png" alt="AppointmentApp Banner" width="100%" />
 </p>
