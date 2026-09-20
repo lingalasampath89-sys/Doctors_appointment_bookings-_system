@@ -1,0 +1,55 @@
+<div class="container waitlist-container">
+  <button (click)="goBack()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Previous</button>
+  
+  <div class="header-section mt-4">
+    <h1 class="title-main">My Waitlists</h1>
+    <p class="subtitle">Get notified automatically when an earlier appointment matching your preferences becomes available.</p>
+  </div>
+
+  <!-- Waitlists Grid -->
+  <div class="waitlists-list" *ngIf="waitlists.length > 0">
+    <div class="card wl-card" *ngFor="let wl of waitlists">
+      <div class="wl-header">
+        <div class="wl-title">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <h3>{{ wl.specialty }}</h3>
+        </div>
+        <span class="status-badge" [ngClass]="wl.status.toLowerCase()">
+          {{ wl.status }}
+        </span>
+      </div>
+
+      <div class="wl-body">
+        <div class="wl-detail">
+          <span class="wl-label">Preferred Date</span>
+          <span class="wl-value">{{ wl.preferredDateRange }}</span>
+        </div>
+        <div class="wl-detail">
+          <span class="wl-label">Time</span>
+          <span class="wl-value">{{ wl.preferredTime }}</span>
+        </div>
+        <div class="wl-detail">
+          <span class="wl-label">Doctor</span>
+          <span class="wl-value">{{ wl.doctorPreference }}</span>
+        </div>
+      </div>
+
+      <div class="wl-footer">
+        <button class="btn-cancel" (click)="leaveWaitlist(wl.id)">
+          <i class="fa-solid fa-xmark"></i> Leave Waitlist
+        </button>
+        <button class="btn-outline">
+          <i class="fa-solid fa-pen"></i> Edit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="waitlists.length === 0" class="empty-state">
+    <i class="fa-regular fa-clock"></i>
+    <h2>You're not currently on any waitlists.</h2>
+    <p>If you couldn't find an appointment that fits your schedule, join a waitlist and we'll notify you if a slot opens up.</p>
+    <a routerLink="/doctors" class="btn-primary">Find an Appointment</a>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container appointments-container">
+  <button (click)="goBack()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Previous</button>
+  <div class="header-section mt-4">
+    <h1 class="title-main">My Appointments</h1>
+    <p class="subtitle">Track and manage your upcoming and past consultations.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn" [class.active]="activeTab === 'upcoming'" (click)="setTab('upcoming')">
+      <i class="fa-regular fa-calendar-check"></i>
+      Upcoming
+      <span class="tab-count" *ngIf="upcoming.length > 0">{{ upcoming.length }}</span>
+    </button>
+    <button class="tab-btn" [class.active]="activeTab === 'past'" (click)="setTab('past')">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      Past
+      <span class="tab-count past-count" *ngIf="past.length > 0">{{ past.length }}</span>
+    </button>
+  </div>
+
+  <!-- Appointment Cards -->
+  <div class="appointments-list" *ngIf="displayedAppointments.length > 0">
+    <div class="card app-card" *ngFor="let app of displayedAppointments">
+      
+      <div class="app-header">
+        <div class="app-status-icon" [ngClass]="app.status.toLowerCase()">
+          <i class="fa-solid fa-user-doctor" *ngIf="app.status === 'Upcoming'"></i>
+          <i class="fa-solid fa-circle-check" *ngIf="app.status === 'Completed'"></i>
+          <i class="fa-solid fa-ban" *ngIf="app.status === 'Cancelled'"></i>
+        </div>
+        <div class="app-title">
+          <h3>{{ app.doctorName }}</h3>
+          <span class="spec-badge">{{ app.specialization }}</span>
+        </div>
+        <span class="status-badge" [ngClass]="app.status.toLowerCase()">
+          {{ app.status }}
+        </span>
+      </div>
+
+      <div class="app-body">
+        <div class="app-detail">
+          <i class="fa-regular fa-calendar"></i>
+          <span>{{ app.date }}</span>
+        </div>
+        <div class="app-detail">
+          <i class="fa-regular fa-clock"></i>
+          <span>{{ app.timeSlot }}</span>
+        </div>
+        <div class="app-detail">
+          <i class="fa-solid fa-user"></i>
+          <span>{{ app.patientName }} &bull; {{ app.patientGender }} &bull; {{ app.patientAge }} yrs</span>
+        </div>
+        <div class="app-detail">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <span>₹{{ app.fee }}</span>
+        </div>
+        <div class="app-detail app-id">
+          <i class="fa-solid fa-hashtag"></i>
+          <span>{{ app.id }}</span>
+        </div>
+      </div>
+
+      <div class="app-footer">
+        <button class="btn-cancel" *ngIf="app.status === 'Upcoming'" (click)="cancelAppointment(app.id)">
+          <i class="fa-solid fa-xmark"></i> Cancel Appointment
+        </button>
+        <a [routerLink]="['/doctors', app.doctorId]" class="btn-secondary">
+          <i class="fa-solid fa-user-doctor"></i> View Doctor
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="displayedAppointments.length === 0" class="empty-state">
+    <i class="fa-regular fa-calendar-xmark"></i>
+    <h2>No {{ activeTab }} appointments</h2>
+    <p *ngIf="activeTab === 'upcoming'">Book a consultation to get started.</p>
+    <p *ngIf="activeTab === 'past'">You have no past appointment records.</p>
+    <a routerLink="/doctors" class="btn-primary" *ngIf="activeTab === 'upcoming'">Find a Doctor</a>
+  </div>
+</div>

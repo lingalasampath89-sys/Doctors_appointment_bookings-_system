@@ -1,0 +1,268 @@
+/* =============================================
+   GLOBAL STYLES — CareConnect AI
+   Typography: Inter (single family)
+   ============================================= */
+
+:root {
+  /* ── Color Tokens ── */
+  --pine: #0f766e;
+  --pine-deep: #115e59;
+  --gold: #f59e0b;
+  --paper: #ffffff;
+  --background: #f8fafc;
+  --ink: #0f172a;
+  --danger: #e11d48;
+
+  --bg-primary: var(--background);
+  --bg-secondary: var(--paper);
+  --text-primary: var(--ink);
+  --text-secondary: #64748b;
+  --accent-primary: var(--pine);
+  --accent-hover: var(--pine-deep);
+  --border-color: #e2e8f0;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --success: var(--pine);
+  --warning: var(--gold);
+  --danger-color: var(--danger);
+
+  /* ── Typography — Inter Only ── */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* --font-display and --font-mono are aliased to Inter for compatibility */
+  --font-display: var(--font-main);
+  --font-mono: var(--font-main);
+
+  /* ── Type Scale (rem, base 16px) ── */
+  --text-h1: 3rem;        /* 48px */
+  --text-h2: 2.25rem;     /* 36px */
+  --text-h3: 1.5rem;      /* 24px */
+  --text-h4: 1.25rem;     /* 20px */
+  --text-body: 1rem;      /* 16px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-xs: 0.75rem;     /* 12px */
+
+  /* ── Font Weights ── */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* ── Line Heights ── */
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+  --lh-ui: 1.4;
+
+  /* ── Letter Spacing ── */
+  --ls-heading: -0.02em;
+  --ls-body: -0.01em;
+  --ls-ui: -0.01em;
+
+  /* ── Misc ── */
+  --border-radius-lg: 20px;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --background: #0a0f0e;
+  --paper: #0f1f1c;
+  --ink: #f1f5f4;
+  --text-secondary: #94a3b8;
+  --border-color: #1e3530;
+  --bg-primary: var(--background);
+  --bg-secondary: var(--paper);
+  --text-primary: var(--ink);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base Body ── */
+body {
+  font-family: var(--font-main);
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  /* Subtle full-site background texture */
+  background-image:
+    linear-gradient(var(--bg-primary), var(--bg-primary)),
+    url('/hero_bg.jpg');
+  background-blend-mode: color;
+  background-size: auto, cover;
+  background-attachment: local, fixed;
+  background-position: center, center 30%;
+}
+
+/* ── Heading Scale ── */
+h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+h5, h6 {
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+p {
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+}
+
+strong, b {
+  font-weight: var(--fw-semibold); /* Never 700+ */
+}
+
+small {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+}
+
+/* ── Links ── */
+a {
+  text-decoration: none;
+  color: var(--accent-primary);
+  transition: var(--transition);
+  font-weight: inherit;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+/* ── Form Elements inherit Inter ── */
+button, input, textarea, select {
+  font-family: var(--font-main);
+  font-size: var(--text-body);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-ui);
+  letter-spacing: var(--ls-ui);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-weight: var(--fw-regular);
+}
+
+/* ── Utilities ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Primary Button ── */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-main);
+  font-weight: var(--fw-medium);
+  font-size: var(--text-body);
+  line-height: var(--lh-ui);
+  letter-spacing: var(--ls-ui);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.3);
+  color: #fff;
+}
+
+.btn-primary:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Semantic Title Classes ── */
+.title-main {
+  font-family: var(--font-main);
+  font-size: var(--text-h2);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--text-secondary);
+}

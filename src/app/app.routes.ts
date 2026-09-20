@@ -1,0 +1,35 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { DoctorListComponent } from './components/doctor-list/doctor-list.component';
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
+import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { WaitlistComponent } from './components/waitlist/waitlist.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { InsuranceComponent } from './components/insurance/insurance.component';
+import { HelpComponent } from './components/help/help.component';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'doctors', component: DoctorListComponent },
+  { path: 'doctors/:id', component: DoctorDetailsComponent },
+  { path: 'book/:doctorId', component: BookingFormComponent },
+  { path: 'my-appointments', component: MyAppointmentsComponent },
+  { path: 'waitlist', component: WaitlistComponent },
+  { path: 'confirmation/:bookingId', component: ConfirmationComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'how-it-works', component: HowItWorksComponent },
+  { path: 'insurance', component: InsuranceComponent },
+  { path: 'help', component: HelpComponent },
+  { path: '**', redirectTo: '' }
+];

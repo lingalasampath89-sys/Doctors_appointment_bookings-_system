@@ -1,0 +1,85 @@
+<div class="container details-container" *ngIf="doctor">
+  <button (click)="goBack()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Previous</button>
+  
+  <!-- Profile Header Card -->
+  <div class="card details-header-card">
+    <div class="details-header">
+      <div class="photo-wrap">
+        <img [src]="doctor.photoUrl" [alt]="doctor.name">
+      </div>
+      <div class="info-header">
+        <h1 class="title-main">{{ doctor.name }}</h1>
+        <span class="badge">{{ doctor.specialization }}</span>
+        <p class="qualification"><i class="fa-solid fa-user-graduate"></i> {{ doctor.qualification }}</p>
+        <div class="meta-row">
+          <span><i class="fa-solid fa-location-dot"></i> {{ doctor.location }}</span>
+          <span><i class="fa-solid fa-briefcase-medical"></i> {{ doctor.experience }} Years Exp.</span>
+          <span class="rating-chip"><i class="fa-solid fa-star"></i> {{ doctor.rating }} ({{ doctor.totalReviews }} reviews)</span>
+        </div>
+        <div class="fee-badge">
+          <i class="fa-solid fa-indian-rupee-sign"></i> ₹{{ doctor.fee }} per consultation
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="details-body">
+    <div class="left-col">
+      <!-- About -->
+      <div class="card info-section">
+        <h3><i class="fa-solid fa-circle-info"></i> About Doctor</h3>
+        <p>{{ doctor.about }}</p>
+      </div>
+
+      <!-- Available Days -->
+      <div class="card info-section">
+        <h3><i class="fa-regular fa-calendar-days"></i> Available Days</h3>
+        <div class="days-list">
+          <span class="day-badge" *ngFor="let day of doctor.availableDays">{{ day }}</span>
+        </div>
+      </div>
+
+      <!-- Timings -->
+      <div class="card info-section">
+        <h3><i class="fa-regular fa-clock"></i> Consultation Hours</h3>
+        <p class="timings-text">{{ doctor.timings }}</p>
+      </div>
+
+      <!-- Reviews -->
+      <div class="card info-section">
+        <h3><i class="fa-regular fa-star"></i> Patient Reviews</h3>
+        <div class="reviews-list">
+          <div class="review-item" *ngFor="let review of doctor.reviews">
+            <div class="review-header">
+              <div class="reviewer-avatar">{{ review.reviewer.charAt(0) }}</div>
+              <div>
+                <strong>{{ review.reviewer }}</strong>
+                <div class="stars">
+                  <i class="fa-solid fa-star" *ngFor="let s of [].constructor(review.rating)"></i>
+                </div>
+              </div>
+              <span class="review-date">{{ review.date }}</span>
+            </div>
+            <p class="review-comment">{{ review.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="card booking-cta-card">
+        <h3>Book an Appointment</h3>
+        <p>Available {{ doctor.availableDays.length }} days a week</p>
+        <a [routerLink]="['/book', doctor.id]" class="btn-primary book-btn">
+          Book Appointment <i class="fa-regular fa-calendar-check"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container not-found" *ngIf="!doctor">
+  <h2>Doctor not found!</h2>
+  <a routerLink="/doctors" class="btn-primary">Back to Search</a>
+</div>

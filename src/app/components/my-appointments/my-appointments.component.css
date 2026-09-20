@@ -1,0 +1,287 @@
+.appointments-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 20px;
+}
+
+.header-section {
+  text-align: center;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 0;
+}
+
+.tab-btn:hover {
+  color: var(--accent-primary);
+}
+
+.tab-btn.active {
+  color: var(--accent-primary);
+  border-bottom-color: var(--accent-primary);
+}
+
+.tab-count {
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 20px;
+  padding: 0.125rem 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-ui);
+}
+
+.past-count {
+  background: var(--text-secondary);
+}
+
+/* Appointment Cards */
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-status-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.app-status-icon.upcoming {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--pine);
+}
+
+.app-status-icon.completed {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--pine);
+}
+
+.app-status-icon.cancelled {
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--danger);
+}
+
+.app-title {
+  flex: 1;
+}
+
+.app-title h3 {
+  font-size: var(--text-body);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.spec-badge {
+  display: inline-block;
+  background-color: rgba(15, 118, 110, 0.1);
+  color: var(--accent-primary);
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.status-badge.upcoming {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--pine);
+}
+
+.status-badge.completed {
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--pine);
+}
+
+.status-badge.cancelled {
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--danger);
+}
+
+/* App Body */
+.app-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  background: var(--background);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+}
+
+.app-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.app-detail i {
+  color: var(--accent-primary);
+  width: 16px;
+  font-size: 14px;
+}
+
+.app-id {
+  grid-column: 1 / -1;
+  font-family: var(--font-main);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-regular);
+  color: var(--text-secondary);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+/* App Footer */
+.app-footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(225, 29, 72, 0.05);
+  color: var(--danger);
+  border: 1.5px solid rgba(225, 29, 72, 0.2);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+
+.btn-cancel:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--background);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty-state i {
+  font-size: 64px;
+  color: var(--border-color);
+  margin-bottom: 8px;
+}
+
+.empty-state h2 {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .appointments-container { padding: 1.5rem 1rem; gap: 1.25rem; }
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tab-btn { padding: 0.75rem 1rem; font-size: var(--text-sm); white-space: nowrap; }
+  .app-card { padding: 1.25rem 1rem; }
+  .app-body { padding: 0.875rem; }
+  .app-footer { flex-wrap: wrap; }
+  .btn-cancel, .btn-secondary { flex: 1 1 calc(50% - 0.5rem); justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .app-body { grid-template-columns: 1fr; }
+  .app-header { flex-wrap: wrap; }
+  .status-badge { align-self: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .tab-btn { padding: 0.625rem 0.875rem; }
+  .btn-cancel, .btn-secondary { flex: 1 1 100%; }
+  .app-status-icon { width: 2.5rem; height: 2.5rem; font-size: 1rem; }
+}

@@ -1,0 +1,114 @@
+<div class="confirmation-page" *ngIf="appointment">
+
+  <!-- Animated success header -->
+  <div class="success-hero">
+    <div class="success-icon-wrap">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <h1 class="title-main">Appointment Confirmed!</h1>
+    <p class="subtitle">You're all set. We'll see you soon.</p>
+  </div>
+
+  <!-- Booking detail card -->
+  <div class="container confirmation-container">
+    <div class="card confirmation-card">
+
+      <!-- Booking ID banner -->
+      <div class="booking-id-banner">
+        <div>
+          <span class="id-label">Booking ID</span>
+          <strong class="id-value">{{ appointment.id }}</strong>
+        </div>
+        <div class="status-pill">
+          <i class="fa-solid fa-circle-dot"></i> Confirmed
+        </div>
+      </div>
+
+      <!-- Details grid -->
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <div>
+            <span class="detail-label">Doctor</span>
+            <strong class="detail-value">{{ appointment.doctorName }}</strong>
+            <span class="detail-sub">{{ appointment.specialization }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-user"></i></div>
+          <div>
+            <span class="detail-label">Patient</span>
+            <strong class="detail-value">{{ appointment.patientName }}</strong>
+            <span class="detail-sub">{{ appointment.patientGender }} &bull; {{ appointment.patientAge }} yrs</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-regular fa-calendar"></i></div>
+          <div>
+            <span class="detail-label">Date</span>
+            <strong class="detail-value">{{ appointment.date }}</strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-regular fa-clock"></i></div>
+          <div>
+            <span class="detail-label">Time Slot</span>
+            <strong class="detail-value">{{ appointment.timeSlot }}</strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <span class="detail-label">Contact</span>
+            <strong class="detail-value">{{ appointment.patientPhone }}</strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon fee-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <div>
+            <span class="detail-label">Consultation Fee</span>
+            <strong class="detail-value fee-value">₹{{ appointment.fee }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Symptoms (if any) -->
+      <div class="symptoms-block" *ngIf="appointment.symptoms">
+        <span class="detail-label"><i class="fa-solid fa-notes-medical"></i> Reason / Symptoms</span>
+        <p>{{ appointment.symptoms }}</p>
+      </div>
+
+      <!-- Info note -->
+      <div class="info-note">
+        <i class="fa-solid fa-circle-info"></i>
+        Please arrive 10 minutes before your scheduled time. Carry a valid photo ID and previous prescriptions if any.
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <a routerLink="/my-appointments" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> View My Appointments
+        </a>
+        <a routerLink="/doctors" class="btn-outline">
+          <i class="fa-solid fa-magnifying-glass"></i> Book Another
+        </a>
+        <a routerLink="/" class="btn-outline">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container not-found" *ngIf="!appointment">
+  <i class="fa-regular fa-face-sad-tear"></i>
+  <h2>Booking Details Not Found</h2>
+  <p>This booking may not exist or may have been cleared.</p>
+  <a routerLink="/" class="btn-primary">Return Home</a>
+</div>

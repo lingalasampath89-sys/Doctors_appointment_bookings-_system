@@ -1,0 +1,61 @@
+<nav class="navbar">
+  <div class="container nav-content">
+    
+    <!-- Logo Section -->
+    <a routerLink="/" class="logo">
+      <i class="fa-solid fa-notes-medical"></i> 
+      CareConnect AI
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a routerLink="/doctors">Find Care</a></li>
+      <li><a routerLink="/my-appointments">Appointments</a></li>
+      <li><a routerLink="/waitlist">Waitlist</a></li>
+      <li><a routerLink="/saved-doctors">Saved Doctors</a></li>
+      <li>
+        <button class="nav-icon-btn" title="Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge">1</span>
+        </button>
+      </li>
+      <li>
+        <button class="theme-toggle" (click)="toggleTheme()" title="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </li>
+      <li><a routerLink="/profile" class="nav-icon-btn" title="Profile"><i class="fa-regular fa-user"></i></a></li>
+      <li><a routerLink="/login" class="btn-primary">Login</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<!-- Main content routing area -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="mobile-bottom-nav">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-item">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+  <a routerLink="/doctors" routerLinkActive="active" class="mobile-nav-item">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span>Search</span>
+  </a>
+  <a routerLink="/my-appointments" routerLinkActive="active" class="mobile-nav-item">
+    <i class="fa-solid fa-calendar-check"></i>
+    <span>Appts</span>
+  </a>
+  <a routerLink="/waitlist" routerLinkActive="active" class="mobile-nav-item">
+    <i class="fa-solid fa-clock-rotate-left"></i>
+    <span>Waitlist</span>
+  </a>
+  <a routerLink="/profile" routerLinkActive="active" class="mobile-nav-item">
+    <i class="fa-solid fa-user"></i>
+    <span>Profile</span>
+  </a>
+</nav>

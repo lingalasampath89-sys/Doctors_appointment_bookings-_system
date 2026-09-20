@@ -1,0 +1,310 @@
+<div class="home-container">
+
+  <!-- Hero Section -->
+  <div class="hero-wrapper">
+    <div class="hero-overlay"></div>
+    <div class="hero-section">
+    <div class="hero-badge"><i class="fa-solid fa-circle-check"></i> Trusted by 1 Lakh+ Patients</div>
+    <h1 class="title-main">Find Your Perfect Doctor &amp;<br>Book Appointments Easily</h1>
+    <p class="subtitle">Access top-rated specialists and manage your health from anywhere — quickly and securely.</p>
+
+    <!-- Hero AI Search Bar -->
+    <div class="hero-ai-search-bar">
+      <div class="ai-search-input-group">
+        <i class="fa-solid fa-sparkles"></i>
+        <input type="text" placeholder="What kind of care are you looking for?" aria-label="AI Appointment Search" />
+        <button class="mic-btn" aria-label="Voice Search"><i class="fa-solid fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary search-btn" routerLink="/doctors">
+        Find Care
+      </button>
+    </div>
+    
+    <div class="popular-searches">
+      <span>Popular:</span>
+      <a href="#" class="search-tag">Primary Care</a>
+      <a href="#" class="search-tag">Dermatology</a>
+      <a href="#" class="search-tag">Cardiology</a>
+      <a href="#" class="search-tag">Mental Health</a>
+    </div>
+    </div>
+  </div> <!-- /hero-wrapper -->
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="card stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-user-doctor"></i></div>
+      <div class="stat-info">
+        <h3>5,000+</h3>
+        <p>Verified Doctors</p>
+      </div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+      <div class="stat-info">
+        <h3>4.9/5</h3>
+        <p>Patient Satisfaction</p>
+      </div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="stat-info">
+        <h3>24/7</h3>
+        <p>Expert Support</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browse by Specialization Section -->
+  <div class="section">
+    <h2 class="section-title">Browse by Specialization</h2>
+    <p class="section-sub">Choose a department to find the right specialist for you.</p>
+    <div class="spec-carousel-wrapper">
+      <!-- Left Arrow -->
+      <button class="spec-arrow spec-arrow-left" id="specArrowLeft" (click)="scrollSpecs(-1)" aria-label="Scroll Left">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Scrollable Track -->
+      <div class="specialization-track" id="specTrack">
+        <div class="spec-card" routerLink="/doctors">
+          <div class="spec-img-wrap">
+            <img src="departments/cardiology.jpg" alt="Cardiology" />
+          </div>
+          <div class="spec-card-body">
+            <h4>Cardiology</h4>
+            <span class="spec-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="spec-card" routerLink="/doctors">
+          <div class="spec-img-wrap">
+            <img src="departments/dentistry.jpg" alt="Dentistry" />
+          </div>
+          <div class="spec-card-body">
+            <h4>Dentistry</h4>
+            <span class="spec-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="spec-card" routerLink="/doctors">
+          <div class="spec-img-wrap">
+            <img src="departments/neurology.jpg" alt="Neurology" />
+          </div>
+          <div class="spec-card-body">
+            <h4>Neurology</h4>
+            <span class="spec-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="spec-card" routerLink="/doctors">
+          <div class="spec-img-wrap">
+            <img src="departments/orthopedics.jpg" alt="Orthopedics" />
+          </div>
+          <div class="spec-card-body">
+            <h4>Orthopedics</h4>
+            <span class="spec-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <button class="spec-arrow spec-arrow-right" id="specArrowRight" (click)="scrollSpecs(1)" aria-label="Scroll Right">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Top Doctors Section -->
+  <div class="section bg-alt">
+    <h2 class="section-title">Top Rated Doctors</h2>
+    <p class="section-sub">Hand-picked specialists with the highest patient satisfaction scores.</p>
+    <div class="doctors-grid">
+      <div class="doctor-card" *ngFor="let doc of topDoctors" [routerLink]="['/book', doc.id]">
+        <div class="doctor-avatar">
+          <img [src]="doc.photoUrl" [alt]="doc.name" />
+        </div>
+        <div class="doctor-info">
+          <h4>{{ doc.name }}</h4>
+          <p class="doc-spec">{{ doc.specialization }}</p>
+          <p class="doc-loc"><i class="fa-solid fa-location-dot"></i> {{ doc.location }}</p>
+          <div class="doc-meta">
+            <span class="doc-rating"><i class="fa-solid fa-star"></i> {{ doc.rating }}</span>
+            <span class="doc-exp">{{ doc.experience }} yrs exp.</span>
+            <span class="doc-fee">₹{{ doc.fee }}</span>
+          </div>
+        </div>
+        <button class="btn-book">Book Now</button>
+      </div>
+    </div>
+    <a routerLink="/doctors" class="btn-outline-view">View All Doctors <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+
+  <!-- How It Works Section -->
+  <div class="section">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Book your appointment in 3 easy steps.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4>Search Doctor</h4>
+        <p>Find the best doctor for your needs based on specialty and location.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4>Choose Slot</h4>
+        <p>Select a convenient date and time from the doctor's real-time calendar.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4>Book Appointment</h4>
+        <p>Confirm your booking instantly and receive SMS &amp; Email notifications.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="section bg-alt">
+    <h2 class="section-title">What Our Patients Say</h2>
+    <p class="section-sub">Real experiences from real patients.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="t-text">"Booked an appointment in under 2 minutes. The doctor was incredibly professional and the entire process was seamless."</p>
+        <div class="t-author">
+          <div class="t-avatar">RK</div>
+          <div>
+            <strong>Ravi Kumar</strong>
+            <span>Hyderabad</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="t-text">"Finally a platform that makes scheduling easy! I could see available slots instantly and confirm right away."</p>
+        <div class="t-author">
+          <div class="t-avatar">AS</div>
+          <div>
+            <strong>Anjali Sharma</strong>
+            <span>Bangalore</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p class="t-text">"The reminders and confirmation emails were a huge plus. I didn't miss my appointment and got great treatment."</p>
+        <div class="t-author">
+          <div class="t-avatar">DM</div>
+          <div>
+            <strong>Deepa Menon</strong>
+            <span>Chennai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Got questions? We've got answers.</p>
+    <div class="faq-list">
+      <div class="faq-item" [class.open]="openFaq === 0" (click)="toggleFaq(0)">
+        <div class="faq-q">
+          <span>Is booking an appointment free?</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-a">Yes! Creating an account and booking appointments on CareConnect AI is completely free for patients. You only pay the doctor's consultation fee.</div>
+      </div>
+      <div class="faq-item" [class.open]="openFaq === 1" (click)="toggleFaq(1)">
+        <div class="faq-q">
+          <span>Can I cancel or reschedule my appointment?</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-a">Yes, you can cancel or reschedule up to 2 hours before your appointment slot from your dashboard. Cancellation policies may vary by doctor.</div>
+      </div>
+      <div class="faq-item" [class.open]="openFaq === 2" (click)="toggleFaq(2)">
+        <div class="faq-q">
+          <span>Are the doctors on CareConnect AI verified?</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-a">Absolutely. All doctors on our platform are verified through MCI/NMC registration checks and hold valid medical licences. We also monitor patient reviews continuously.</div>
+      </div>
+      <div class="faq-item" [class.open]="openFaq === 3" (click)="toggleFaq(3)">
+        <div class="faq-q">
+          <span>Will I receive a confirmation after booking?</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-a">Yes! You will receive an instant confirmation via email with all appointment details, including the doctor's name, date, time, and location.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>CareConnect AI</span>
+        </div>
+        <p>Your trusted partner for smarter, faster healthcare appointments across India.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-links-group">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a routerLink="/doctors">Find Care</a></li>
+          <li><a routerLink="/my-appointments">My Appointments</a></li>
+          <li><a routerLink="/how-it-works">How It Works</a></li>
+          <li><a routerLink="/insurance">Insurance</a></li>
+          <li><a routerLink="/help">Help & Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>Popular Care</h5>
+        <ul>
+          <li><a routerLink="/doctors">Primary Care</a></li>
+          <li><a routerLink="/doctors">Dermatology</a></li>
+          <li><a routerLink="/doctors">Cardiology</a></li>
+          <li><a routerLink="/doctors">Mental Health</a></li>
+          <li><a routerLink="/waitlist">Join Waitlist</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>Company</h5>
+        <ul>
+          <li><a routerLink="/about">About CareConnect AI</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
+          <li><a routerLink="/privacy">Privacy Policy</a></li>
+          <li><a routerLink="/terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 CareConnect AI Booking System. All Rights Reserved.</p>
+      <p>Made with <i class="fa-solid fa-heart" style="color:#e11d48"></i> in India</p>
+    </div>
+  </footer>
+
+</div>

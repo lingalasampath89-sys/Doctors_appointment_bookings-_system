@@ -1,0 +1,74 @@
+<div class="container doctor-list-container">
+  <div class="header-section">
+    <h1 class="title-main">Find a Doctor</h1>
+    <p class="subtitle">Search and filter to find the right specialist for you.</p>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="filter-section card">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterDoctors()" placeholder="Search by doctor name...">
+    </div>
+
+    <div class="filter-box">
+      <i class="fa-solid fa-stethoscope"></i>
+      <select [(ngModel)]="selectedSpecialization" (ngModelChange)="filterDoctors()">
+        <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
+      </select>
+    </div>
+
+    <div class="filter-box">
+      <i class="fa-solid fa-location-dot"></i>
+      <select [(ngModel)]="selectedLocation" (ngModelChange)="filterDoctors()">
+        <option value="All">All Locations</option>
+        <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+      </select>
+    </div>
+
+    <div class="filter-box">
+      <i class="fa-solid fa-indian-rupee-sign"></i>
+      <select [(ngModel)]="selectedFeeRange" (ngModelChange)="filterDoctors()">
+        <option value="All">Any Fee</option>
+        <option value="0-500">Under ₹500</option>
+        <option value="500-1000">₹500 - ₹1000</option>
+        <option value="1000+">Above ₹1000</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-info" *ngIf="filteredDoctors.length > 0">
+    <span>{{ filteredDoctors.length }} doctors found</span>
+  </div>
+
+  <div class="doctors-grid">
+    <div class="card doctor-card" *ngFor="let doctor of filteredDoctors">
+      <div class="doctor-photo">
+        <img [src]="doctor.photoUrl" [alt]="doctor.name">
+      </div>
+      <div class="doctor-info">
+        <div class="doctor-name-row">
+          <h3>{{ doctor.name }}</h3>
+          <div class="rating-badge">
+            <i class="fa-solid fa-star"></i>
+            {{ doctor.rating }}
+          </div>
+        </div>
+        <span class="badge">{{ doctor.specialization }}</span>
+        <p class="detail-row"><i class="fa-solid fa-location-dot"></i> {{ doctor.location }}</p>
+        <p class="detail-row"><i class="fa-solid fa-briefcase-medical"></i> {{ doctor.experience }} Years Exp.</p>
+        <p class="detail-row fee"><i class="fa-solid fa-indian-rupee-sign"></i> ₹{{ doctor.fee }} consultation</p>
+        <div class="actions">
+          <a [routerLink]="['/doctors', doctor.id]" class="btn-primary">View Profile</a>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="filteredDoctors.length === 0" class="no-results">
+      <i class="fa-solid fa-user-doctor-message"></i>
+      <h3>No doctors found</h3>
+      <p>Try adjusting your filters.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+npx @angular/cli@18 generate component components/home --skip-tests
+npx @angular/cli@18 generate component components/login --skip-tests
+npx @angular/cli@18 generate component components/doctor-list --skip-tests
+npx @angular/cli@18 generate component components/doctor-details --skip-tests
+npx @angular/cli@18 generate component components/booking-form --skip-tests
+npx @angular/cli@18 generate component components/my-appointments --skip-tests
+npx @angular/cli@18 generate component components/confirmation --skip-tests
+npx @angular/cli@18 generate service services/doctor --skip-tests
+npx @angular/cli@18 generate service services/appointment --skip-tests
+npx @angular/cli@18 generate service services/auth --skip-tests
+npx @angular/cli@18 generate service services/theme --skip-tests
